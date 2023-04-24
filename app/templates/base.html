@@ -1,0 +1,18 @@
+<!-- Here we will introduce Jinja2 template inheritance -->
+<!doctype html>
+<html>
+    <head>
+        <!-- Jinja2 conditional -->
+        {% if title %}
+            <title>{{ title }} - Microblog</title>
+        {% else %}
+            <title>Welcome to Microblog</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>Microblog: <a href="/index">Home</a></div>
+        <hr>
+        <!-- We can extend this template and replace blocks -->
+        {% block content %}{% endblock %}
+    </body>
+</html>
