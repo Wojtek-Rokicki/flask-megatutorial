@@ -1,0 +1,1 @@
+from app import app # imports app variable from app package
