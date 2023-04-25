@@ -1,18 +1,32 @@
-<!-- Here we will introduce Jinja2 template inheritance -->
 <!doctype html>
 <html>
-    <head>
-        <!-- Jinja2 conditional -->
-        {% if title %}
-            <title>{{ title }} - Microblog</title>
-        {% else %}
-            <title>Welcome to Microblog</title>
-        {% endif %}
-    </head>
-    <body>
-        <div>Microblog: <a href="/index">Home</a></div>
-        <hr>
-        <!-- We can extend this template and replace blocks -->
-        {% block content %}{% endblock %}
-    </body>
+<!-- Here we will introduce Jinja2 template inheritance -->
+<head>
+    <!-- Jinja2 conditional -->
+    {% if title %}
+    <title>{{ title }} - microblog</title>
+    {% else %}
+    <title>microblog</title>
+    {% endif %}
+</head>
+<body>
+    <div>
+        Microblog:
+        <!-- For better cntrol over links -->
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('login') }}">Login</a>
+    </div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <!-- We can extend this template and replace blocks -->
+    {% block content %}{% endblock %}
+</body>
 </html>
